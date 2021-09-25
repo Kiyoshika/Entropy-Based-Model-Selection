@@ -12,6 +12,7 @@ for (i in 1:200)
 # Plot Data
 full_data <- cbind(as.data.frame(x1), as.data.frame(x2), as.data.frame(y))
 plot(x1,y, pch=19, lwd=3)
+plot(x2,y, pch=19, lwd=3)
 
 
 # Models
