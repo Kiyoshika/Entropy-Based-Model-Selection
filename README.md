@@ -13,6 +13,5 @@ a quantification of how much "randomness" exists within a probabilistic system. 
 My entropy-based values are compared against AIC and they appear to be equivalent. This is no surprise since AIC
 is derived from relative entropy.
 
-I also use relative entropy towards the end of the script to quantify the information gain from moving from one
-model to another (e.g, if relative entropy is positive between model_1 and model_2, then you gain information
-by switching from model_2 to model_1 and vice versa if the relative entropy is negative.)
+At the end of the script, we use 1,000 generated test data points to evaluate the errors for each model. The errors
+line up pretty well with our entropy values.
