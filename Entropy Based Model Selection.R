@@ -9,10 +9,26 @@ for (i in 1:200)
   y[i] = 3.3 * x1[i] + 4.8 * x2[i] + rnorm(1, mean = 0, sd = 5)
 }
 
+
+
 # Plot Data
 full_data <- cbind(as.data.frame(x1), as.data.frame(x2), as.data.frame(y))
-plot(x1,y, pch=19, lwd=3)
-plot(x2,y, pch=19, lwd=3)
+plot(x1, y, pch=19, lwd=3)
+plot(x2, y, pch=19, lwd=3)
+
+
+
+# Generate test data
+y_t = c()
+x1_t = c()
+x2_t = c()
+for (i in 1:1000)
+{
+  x1_t[i] = rnorm(1, mean = 2, sd = 2)
+  x2_t[i] = rnorm(1, mean = 4, sd = 3)
+  y_t[i] = 3.3 * x1_t[i] + 4.8 * x2_t[i] + rnorm(1, mean = 0, sd = 5)
+}
+
 
 
 # Models
@@ -94,13 +110,21 @@ AIC(x2_model)
 
 
 
-# Information Gain - Relative Entropy
-# "better" models will be > 0
-# "worse" models will be < 0
-# equivalent models will be 0
-kl_div <- c()
-for (i in 1:nrow(full_data))
-{
-  kl_div[i] = fit1[i]*log(fit1[i] / fit2[i])
-}
--sum(kl_div)
+library(dplyr)
+# Evaluate models against test data
+full_test_data <- cbind(as.data.frame(x1_t), as.data.frame(x2_t), as.data.frame(y_t))
+names(full_test_data) <- c("x1","x2","y")
+
+x1_test_data = full_test_data %>% select(x1)
+x2_test_data = full_test_data %>% select(x2)
+y_test_data = full_test_data %>% select(y)
+
+full_model_preds = predict.lm(full_model, newdata = full_test_data)
+x1_model_preds = predict.lm(x1_model, newdata = x1_test_data)
+x2_model_preds = predict.lm(x2_model, newdata = x2_test_data)
+
+# Mean absolute error
+mean(unlist(abs(full_model_preds - y_test_data)))
+mean(unlist(abs(x1_model_preds - y_test_data)))
+mean(unlist(abs(x2_model_preds - y_test_data)))
+mean(unlist(abs(mean(y) - y_test_data)))
