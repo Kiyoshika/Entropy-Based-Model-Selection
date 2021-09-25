@@ -95,7 +95,6 @@ AIC(x2_model)
 
 
 # Information Gain - Relative Entropy
-# relative entropy of full_model and x2_model
 # "better" models will be > 0
 # "worse" models will be < 0
 # equivalent models will be 0
