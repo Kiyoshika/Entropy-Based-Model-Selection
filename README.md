@@ -4,7 +4,7 @@ Researching entropy-based model selection, this is an example of how to use info
 # How This Method Works
 Keep in mind that this is my experimental approach to deriving an entropy-based metric for model selection and is only somewhat tested.
 
-This derivation begins with the notion of entropy, which is the (negative) expected value of the log likelihood of a model. In the code example, I'm using a linear model with normally distributed residuals (although they don't have to be.)
+This derivation begins with the notion of entropy, which is the (negative) expected value of the log likelihood of a model. In the code example, I'm using a linear model with normally distributed residuals (although they don't have to be.) I am also using a base 2 logarithm to keep my units in "bits", although I don't think it will be a significant impact if a different base is used (needs to be tested).
 
 All independent variables are standard scaled for the purpose of creating a "penalty" metric. This is to keep a level playing field for all coefficients and not be influenced by vastly different scales. After all independent variables are scaled, a typical regression model is fit.
 
@@ -18,4 +18,4 @@ where sd_resid stands for the standard deviation of the residuals computed earli
 
 Then the entropy is the negative of the mean over all values of the log likelihood computed for each y_i.
 
-The final metric is just the sum of this penalty term with the entropy: `penalty + -E[log(L_Y | X)]`
+The final metric is just the sum of this penalty term with the entropy: `penalty + -E[log2(L(Y | X))]`
