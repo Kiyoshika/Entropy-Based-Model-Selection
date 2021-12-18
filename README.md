@@ -26,7 +26,7 @@ This derivation begins with the notion of entropy, which is the (negative) expec
 
 All independent variables are standard scaled for the purpose of creating a "penalty" metric. This is to keep a level playing field for all coefficients and not be influenced by vastly different scales. After all independent variables are scaled, a typical regression model is fit.
 
-After this model is fit, we then define a **penalty score** which is equal to the mean of `exp(-|b_k|)` where `b_k` is the coefficient for feature k. The intuition behind this is, as your coefficients close to zero, the penalty for that feature will be (close to) 1, and the farther your coefficients are from zero then penalty will be (close to) zero. The mean is taken to capture information about the "average penalty" for the model and is used to scale the entropy.
+After this model is fit, we then define a **penalty score** which is equal to the mean of `exp(-|b_k|)` where `b_k` is the coefficient for feature k (THIS DOES NOT INCLUDE THE INTERCEPT TERM as it is a "garbage collector"). The intuition behind this is, as your coefficients close to zero, the penalty for that feature will be (close to) 1, and the farther your coefficients are from zero then penalty will be (close to) zero. The mean is taken to capture information about the "average penalty" for the model and is used to scale the entropy.
 
 Then the standard deviation is computed from the residuals. We now take every pair {y_i, (x_1i, x_2i, ..., x_ki)} and take the expected value (mean) of the log likelihood of the model. In this case, the residuals are normally distributed so the likelihood is then
 
