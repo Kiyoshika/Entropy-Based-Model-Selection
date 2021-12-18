@@ -36,4 +36,6 @@ where sd_resid stands for the standard deviation of the residuals computed earli
 
 Then the entropy is the negative of the mean over all values of the log likelihood computed for each y_i.
 
-The final metric is the product of the penalty and entropy, i.e the entropy is scaled by the penalty: `penalty * -E[log2(L(Y | X))]`
+The final metric is the product of the penalty and entropy, i.e the entropy is scaled by the penalty:
+
+`penalty * -E[log2(L(Y | X))]`
