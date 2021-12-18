@@ -3,6 +3,7 @@ Researching entropy-based model selection, this is an example of how to use info
 
 # Example Output
 This is an example output from the code (note it may vary slightly due to randomness):
+NOTE: the custom_metric and AIC were computed on initial "train" data and RMSE was computed on re-generated unseen data (i.e "test" data)
 ```
 custom_metric      AIC     RMSE
 1     1.7108248 5633.448 4.033701
