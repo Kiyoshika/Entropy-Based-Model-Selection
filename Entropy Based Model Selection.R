@@ -116,15 +116,15 @@ for (i in 1:1000)
 unseen_data = as.data.frame(cbind(x1, x2, x3, x4))
 
 # evaluate RMSE of models on unseen data
-full_model_rmse = sqrt(mean((y - predict.lm(full_model, newdata = unseen_data))^2))
+full_model_rmse           = sqrt(mean((y - predict.lm(full_model, newdata = unseen_data))^2))
 
-good_model_rmse = sqrt(mean((y - predict.lm(good_model, newdata = unseen_data))^2))
+good_model_rmse           = sqrt(mean((y - predict.lm(good_model, newdata = unseen_data))^2))
 
-bad_model_rmse = sqrt(mean((y - predict.lm(bad_model, newdata = unseen_data))^2))
+bad_model_rmse            = sqrt(mean((y - predict.lm(bad_model, newdata = unseen_data))^2))
 
-noisy_model_1_rmse = sqrt(mean((y - predict.lm(noisy_model_1, newdata = unseen_data))^2))
+noisy_model_1_rmse        = sqrt(mean((y - predict.lm(noisy_model_1, newdata = unseen_data))^2))
 
-noisy_model_2_rmse = sqrt(mean((y - predict.lm(noisy_model_2, newdata = unseen_data))^2))
+noisy_model_2_rmse        = sqrt(mean((y - predict.lm(noisy_model_2, newdata = unseen_data))^2))
 
 partial_good_model_1_rmse = sqrt(mean((y - predict.lm(partial_good_model_1, newdata = unseen_data))^2))
 
